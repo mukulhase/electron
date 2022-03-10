@@ -162,6 +162,14 @@ void BrowserView::SetBackgroundColor(const std::string& color_name) {
   }
 }
 
+bool BrowserView::GetVisible() {
+  return view_->GetVisible();
+}
+
+void BrowserView::SetVisible(bool visible) {
+  view_->SetVisible(visible);
+}
+
 v8::Local<v8::Value> BrowserView::GetWebContents(v8::Isolate* isolate) {
   if (web_contents_.IsEmpty()) {
     return v8::Null(isolate);
@@ -179,6 +187,8 @@ v8::Local<v8::ObjectTemplate> BrowserView::FillObjectTemplate(
       .SetMethod("setBounds", &BrowserView::SetBounds)
       .SetMethod("getBounds", &BrowserView::GetBounds)
       .SetMethod("setBackgroundColor", &BrowserView::SetBackgroundColor)
+      .SetProperty("visible", &BrowserView::GetVisible,
+                   &BrowserView::SetVisible)
       .SetProperty("webContents", &BrowserView::GetWebContents)
       .Build();
 }

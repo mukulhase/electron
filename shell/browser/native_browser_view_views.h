@@ -38,6 +38,9 @@ class NativeBrowserViewViews : public NativeBrowserView {
 
   SkRegion* draggable_region() const { return draggable_region_.get(); }
 
+  bool GetVisible() override;
+  void SetVisible(bool visible) override;
+
  private:
   void ResetAutoResizeProportions();
 

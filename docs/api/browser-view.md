@@ -36,7 +36,13 @@ app.whenReady().then(() => {
 
 Objects created with `new BrowserView` have the following properties:
 
-#### `view.webContents` _Experimental_
+#### `view.visibile`
+
+A `Boolean` property that controls whether or not the view is shown in the
+currently attached window. Note that this does not check if the window itself
+is visible or if the bounds of the view are visible within the window.
+
+#### `view.webContents` _Readonly_
 
 A [`WebContents`](web-contents.md) object owned by this view.
 
